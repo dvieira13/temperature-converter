@@ -8,5 +8,6 @@ Full-stack TypeScript project:
 - Clone the repo
 - 'npm i' from root
 - 'npm run dev' from root
+- 'npm test' to run backend jasmine tests
 
 
