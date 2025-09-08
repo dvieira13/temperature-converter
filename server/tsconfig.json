@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "CommonJS",
-    "rootDir": "src",         // only src is compiled
-    "outDir": "dist",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "types": ["node", "jasmine"]
   },
-  "include": ["src"],    // only compile src
+  "include": ["src", "spec"],
   "exclude": ["node_modules", "dist"]
 }

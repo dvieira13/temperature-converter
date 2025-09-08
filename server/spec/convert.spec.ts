@@ -1,4 +1,4 @@
-import { convertTemperature } from "../convert";
+import { convertTemperature } from "../src/convert.js";
 
 describe("convertTemperature", () => {
 
