@@ -1,15 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig, loadEnv } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:4000',
-        changeOrigin: true,
+export default defineConfig(({ mode }) => {
+  // Load env vars based on current mode (development, production, etc.)
+  //    modes are development, production, staging. all 3 load .env
+  //    to specify certain data for certain modes, use .env.development for ex
+  //process.cwd() looks for current working directory. /client/.env in this case
+  const env = loadEnv(mode, process.cwd(), "VITE_");
+
+  return {
+    plugins: [react()],
+    server: {
+      proxy: {
+        "/api": {
+          // Use VITE_API_URL from .env (fallback to localhost:4002)
+          target: env.VITE_API_URL || "http://localhost:4002",
+          changeOrigin: true,
+        },
       },
     },
-  }
-})
+  };
+});

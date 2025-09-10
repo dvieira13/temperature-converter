@@ -1,9 +1,11 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { convertTemperature } from "./convert";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-const PORT = 4000;
+const port = process.env.PORT || 4002;
 
 app.use(cors());
 app.use(express.json());
@@ -23,6 +25,6 @@ app.get("/api/convert", (req: Request, res: Response) => {
   res.json({ from, to, input: numValue, output: result });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
